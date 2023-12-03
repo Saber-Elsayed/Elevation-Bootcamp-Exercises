@@ -1,0 +1,11 @@
+.sidbar{
+    background-color: blueviolet;
+}
+
+.chatView{
+    height : 90%;
+}
+
+.chatInputView{
+    height : 10%;
+}
