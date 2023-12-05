@@ -32,20 +32,22 @@
     </div>
 
     <hr>
-    <script id="results">
-        <div>
-            <img src="{{img}}" alt="Property Image"></img>
-            <h2>{{address}}</h2>
-            <p>Price: ${{price}}</p>
-            <p>Rooms: {{rooms}}</p>
-            <p>Parking: {{#if: parking}}Yes{{else}}No{{if:}}</p>
-            <p>Immediate Availability: {{#if: immediate}}Yes{{else}}No{{/if}}</p>
-            <p>Contact Details:</p>
-            <ul>
-                <li>Name: {{contactDetails,name}}</li>
-                <li>Email: {{contactDetails,email}}</li>
-            </ul>
-        </div>
+    <div id="results"></div>
+
+    <script id="results-template" type="text/x-handlebars-template">
+        <ul>
+        {{#each apartments}}
+        
+            <img src="{{img}}"  class="img" alt="Property Image">
+            <li>address: {{address}}</li>
+            <li>Price: {{price}}</li>
+            <li>Rooms: {{rooms}}</li>
+            <li>parking: {{parking}}</li>
+           
+            {{/each}}
+        </ul>
+        <a href="{{link}}">{{name}}</a>
+
     </script>
 
     <!-- Your Code Here -->
