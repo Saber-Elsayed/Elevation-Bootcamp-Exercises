@@ -1,13 +1,12 @@
 function bakeCake() {
   console.log("Starting the cake baking process...");
+  prepareBatter().then((batter) => {
+    bakeBatter(batter).then((cake) => {
+      const frostedCake = frostCake(cake);
 
-  const batter = prepareBatter();
-  const cake = bakeBatter(batter);
-  cake.then((cake) => {
-    const frostedCake = frostCake(cake);
-
-    console.log("Cake baking process completed!");
-    console.log("Final Cake:", JSON.stringify(frostedCake));
+      console.log("Cake baking process completed!");
+      console.log("Final Cake:", JSON.stringify(frostedCake));
+    });
   });
 }
 
@@ -30,15 +29,23 @@ function measureIngredients(ingredient, quantity) {
 }
 
 function mixIngredients(ingredients) {
-  console.log("Mixing ingredients together");
-  return {
-    mixture: ingredients,
-    consistency: "smooth",
-  };
+  console.log("Mixing ingredients together...");
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Mixing complete!");
+      const mixedBatter = {
+        mixture: ingredients,
+        consistency: "smooth",
+      };
+      resolve(mixedBatter);
+    }, 3000);
+  });
 }
 
 function bakeBatter(batter) {
   console.log("Baking the batter...");
+
   return new Promise((resolve) => {
     setTimeout(() => {
       console.log("Baking complete!");
