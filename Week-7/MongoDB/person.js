@@ -31,3 +31,9 @@ let p5 = new Person({ firstName: "Shoober", lastName: "T", age: 44 });
 
 let allTheShooberts = [p2, p3, p4, p5];
 allTheShooberts.forEach((s) => s.save());
+
+Person.findById("6592a5381d794598e87000fb").then(function (person) {
+  person.age += 100; //how time flies
+  person.save();
+  console.log(person);
+});
