@@ -54,43 +54,53 @@ c1.reviews.push(r1);
 b1.save();
 c1.save();
 r1.save();
-Book.find({})
-  .exec()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log("ERROR");
-  });
+// Book.find({})
+//   .exec()
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log("ERROR");
+//   });
+// Review.find({})
+//   .exec()
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log("ERROR");
+//   });
+
+// Book.findOne({})
+//   .populate("reviews")
+//   .exec()
+//   .then((book) => {
+//     console.log(book.reviews);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// Book.findOne({})
+//   .populate({
+//     path: "reviews",
+//     populate: {
+//       path: "critic",
+//     },
+//   })
+//   .exec()
+//   .then((book) => {
+//     console.log(book.reviews);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
 Review.find({})
+  .populate("book critic")
   .exec()
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log("ERROR");
-  });
-
-Book.findOne({})
-  .populate("reviews")
-  .exec()
-  .then((book) => {
-    console.log(book.reviews);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-Book.findOne({})
-  .populate({
-    path: "reviews",
-    populate: {
-      path: "critic",
-    },
-  })
-  .exec()
-  .then((book) => {
-    console.log(book.reviews);
+  .then((reviews) => {
+    console.log(reviews);
   })
   .catch((err) => {
     console.error(err);
