@@ -62,3 +62,36 @@ Book.find({})
   .catch((err) => {
     console.log("ERROR");
   });
+Review.find({})
+  .exec()
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log("ERROR");
+  });
+
+Book.findOne({})
+  .populate("reviews")
+  .exec()
+  .then((book) => {
+    console.log(book.reviews);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+Book.findOne({})
+  .populate({
+    path: "reviews",
+    populate: {
+      path: "critic",
+    },
+  })
+  .exec()
+  .then((book) => {
+    console.log(book.reviews);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
