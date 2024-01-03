@@ -105,3 +105,15 @@ Review.find({})
   .catch((err) => {
     console.error(err);
   });
+
+Critic.findOne({})
+  .then((critic) => {
+    // Now we have a single critic
+    return Critic.populate(critic, { path: "reviews" });
+  })
+  .then((populatedCritic) => {
+    console.log(populatedCritic.reviews);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
